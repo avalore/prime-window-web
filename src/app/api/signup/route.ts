@@ -94,7 +94,7 @@ async function verifyTurnstileToken(token: string, secret: string, ip: string): 
 }
 
 export async function POST(request: NextRequest) {
-  const loopsApiKey = process.env.LOOPS_API_KEY;
+  const loopsApiKey = process.env.LOOPS_API_KEY ?? process.env.loops_api_key;
   if (!loopsApiKey) {
     return errorResponse(503, "Signups are not configured yet.");
   }
@@ -142,6 +142,22 @@ export async function POST(request: NextRequest) {
 
   const source = process.env.LOOPS_SIGNUP_SOURCE ?? "PrimeWindow early access form";
   const eventName = process.env.LOOPS_SIGNUP_EVENT_NAME ?? "earlyAccessSignup";
+  const activitiesPropertyKey = process.env.LOOPS_ACTIVITIES_PROPERTY_KEY ?? "activities";
+  const locationPropertyKey = process.env.LOOPS_LOCATION_PROPERTY_KEY ?? "location";
+
+  const contactPayload: Record<string, unknown> = {
+    email,
+    subscribed: true,
+    source,
+    userGroup: "PrimeWindow early access",
+  };
+
+  if (activities.length > 0) {
+    contactPayload[activitiesPropertyKey] = activities.join(", ");
+  }
+  if (location) {
+    contactPayload[locationPropertyKey] = location;
+  }
 
   const contactResponse = await fetch(`${LOOPS_BASE_URL}/v1/contacts/update`, {
     method: "PUT",
@@ -149,12 +165,7 @@ export async function POST(request: NextRequest) {
       Authorization: `Bearer ${loopsApiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      email,
-      subscribed: true,
-      source,
-      userGroup: "PrimeWindow early access",
-    }),
+    body: JSON.stringify(contactPayload),
   });
 
   if (!contactResponse.ok) {

@@ -83,7 +83,14 @@ Current behaviour:
 
 - `LOOPS_SIGNUP_SOURCE` (defaults to `PrimeWindow early access form`)
 - `LOOPS_SIGNUP_EVENT_NAME` (defaults to `earlyAccessSignup`)
+- `LOOPS_ACTIVITIES_PROPERTY_KEY` (defaults to `activities`)
+- `LOOPS_LOCATION_PROPERTY_KEY` (defaults to `location`)
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (enables Turnstile widget in the form)
 - `TURNSTILE_SECRET_KEY` (enables Turnstile verification in API route)
 
 If you set `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, also set `TURNSTILE_SECRET_KEY` so server-side checks are enforced.
+
+Notes for Loops custom fields:
+
+- `activities` and `location` are sent both as contact properties and event properties.
+- If your Loops workspace uses different custom field API names, set `LOOPS_ACTIVITIES_PROPERTY_KEY` and `LOOPS_LOCATION_PROPERTY_KEY` to match those names.
