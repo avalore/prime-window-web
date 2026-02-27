@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 120) rotate(25) scale(560 420)">
+      <stop stop-color="#425782" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#0A0F1B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(900 520) rotate(-25) scale(420 260)">
+      <stop stop-color="#7BA893" stop-opacity="0.33"/>
+      <stop offset="1" stop-color="#0A0F1B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0A0F1B"/>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+  <rect x="95" y="145" width="1010" height="340" rx="40" fill="#151F32" fill-opacity="0.62" stroke="#34476A" stroke-opacity="0.5"/>
+  <text x="140" y="300" fill="#E7EDF5" font-size="76" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">
+    PrimeWindow
+  </text>
+  <text x="140" y="356" fill="#9AA9C2" font-size="32" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">
+    Some days are just perfect. PrimeWindow tells you when.
+  </text>
+</svg>

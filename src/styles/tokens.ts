@@ -1,0 +1,51 @@
+export const tokens = {
+  colours: {
+    background: "8 12 22",
+    surface: "17 23 38",
+    text: "233 238 246",
+    mutedText: "149 164 188",
+    accentGreen: "123 168 147",
+    amber: "191 164 103",
+    red: "186 103 103",
+    border: "46 62 88",
+  },
+  radii: {
+    sm: "0.75rem",
+    md: "1rem",
+    lg: "1.5rem",
+  },
+  shadows: {
+    soft: "0 16px 50px rgba(2, 6, 16, 0.28)",
+    card: "0 24px 75px rgba(1, 5, 13, 0.4)",
+    glow: "0 0 70px rgba(123, 168, 147, 0.22)",
+  },
+  spacing: {
+    xs: "0.375rem",
+    sm: "0.625rem",
+    md: "1rem",
+    lg: "1.5rem",
+    xl: "2rem",
+    xxl: "3rem",
+    xxxl: "4.5rem",
+  },
+} as const;
+
+export const cssVariables: Record<string, string> = {
+  "--color-bg": tokens.colours.background,
+  "--color-surface": tokens.colours.surface,
+  "--color-text": tokens.colours.text,
+  "--color-muted": tokens.colours.mutedText,
+  "--color-accent": tokens.colours.accentGreen,
+  "--color-amber": tokens.colours.amber,
+  "--color-danger": tokens.colours.red,
+  "--color-border": tokens.colours.border,
+  "--radius-sm": tokens.radii.sm,
+  "--radius-md": tokens.radii.md,
+  "--radius-lg": tokens.radii.lg,
+  "--shadow-soft": tokens.shadows.soft,
+  "--shadow-card": tokens.shadows.card,
+  "--shadow-glow": tokens.shadows.glow,
+  "--space-18": "4.5rem",
+  "--font-sans": "'Avenir Next', 'Suisse Intl', 'Segoe UI', 'Helvetica Neue', sans-serif",
+  "--font-display": "'Canela', 'Iowan Old Style', 'Palatino Linotype', serif",
+};
