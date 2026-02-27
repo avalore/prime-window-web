@@ -5,8 +5,8 @@ export function SiteFooter() {
     <footer className="border-t border-border/45 py-8">
       <div className="container-shell flex flex-col gap-4 text-sm text-muted md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-5">
-          <Link href="/open-letter" className="transition-colors hover:text-text">
-            Open letter
+          <Link href="/the-problem-with-weather-apps" className="transition-colors hover:text-text">
+            The problem
           </Link>
           <Link href="/privacy" className="transition-colors hover:text-text">
             Privacy

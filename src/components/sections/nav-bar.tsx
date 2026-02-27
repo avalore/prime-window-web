@@ -4,7 +4,7 @@ const links = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#use-cases", label: "Use cases" },
   { href: "#confidence", label: "Confidence" },
-  { href: "/open-letter", label: "Open letter" },
+  { href: "/the-problem-with-weather-apps", label: "The problem" },
   { href: "#early-access", label: "Early access" },
 ];
 

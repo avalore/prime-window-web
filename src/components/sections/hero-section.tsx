@@ -54,8 +54,11 @@ export function HeroSection() {
               See how it works
             </a>
           </div>
-          <Link href="/open-letter" className="inline-flex text-sm text-muted transition-colors hover:text-text">
-            Read why I am building PrimeWindow
+          <Link
+            href="/the-problem-with-weather-apps"
+            className="inline-flex text-sm text-muted transition-colors hover:text-text"
+          >
+            Read: The problem with weather apps
           </Link>
         </div>
 

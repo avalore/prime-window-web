@@ -1,22 +1,56 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import Script from "next/script";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/cn";
 
 const activities = ["Fly", "Surf", "Ride", "Climb", "Sail", "Shoot", "Run", "Explore"] as const;
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const turnstileWidgetId = "primewindow-turnstile";
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+declare global {
+  interface Window {
+    primewindowTurnstileCallback?: (token: string) => void;
+    primewindowTurnstileExpiredCallback?: () => void;
+    turnstile?: {
+      reset: (widget?: string | HTMLElement) => void;
+    };
+  }
+}
 
 export function EarlyAccessForm() {
   const [email, setEmail] = useState("");
   const [location, setLocation] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
   const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!turnstileSiteKey || typeof window === "undefined") {
+      return;
+    }
+
+    window.primewindowTurnstileCallback = (token: string) => {
+      setTurnstileToken(token);
+      setError("");
+    };
+
+    window.primewindowTurnstileExpiredCallback = () => {
+      setTurnstileToken("");
+    };
+
+    return () => {
+      delete window.primewindowTurnstileCallback;
+      delete window.primewindowTurnstileExpiredCallback;
+    };
+  }, []);
 
   const selectedText = useMemo(() => {
     if (selected.length === 0) {
@@ -31,6 +65,18 @@ export function EarlyAccessForm() {
     );
   };
 
+  const resetTurnstile = () => {
+    if (!turnstileSiteKey || typeof window === "undefined" || !window.turnstile) {
+      return;
+    }
+
+    const widget = document.getElementById(turnstileWidgetId);
+    if (widget) {
+      window.turnstile.reset(widget);
+      setTurnstileToken("");
+    }
+  };
+
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -43,15 +89,44 @@ export function EarlyAccessForm() {
       return;
     }
 
+    if (turnstileSiteKey && turnstileToken.length === 0) {
+      setError("Please complete the anti-spam check.");
+      return;
+    }
+
     setError("");
     setIsSubmitting(true);
+    try {
+      const page = typeof window !== "undefined" ? window.location.pathname : "/";
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          activities: selected,
+          location,
+          company: honeypot,
+          turnstileToken,
+          page,
+        }),
+      });
 
-    await new Promise((resolve) => {
-      setTimeout(resolve, 450);
-    });
+      const data = (await response.json()) as { ok?: boolean; error?: string };
+      if (!response.ok || !data.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        resetTurnstile();
+        return;
+      }
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      setIsSubmitted(true);
+    } catch {
+      setError("Could not submit right now. Please try again.");
+      resetTurnstile();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -137,6 +212,21 @@ export function EarlyAccessForm() {
           onChange={(event) => setHoneypot(event.target.value)}
         />
       </div>
+
+      {turnstileSiteKey ? (
+        <div className="space-y-2">
+          <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="afterInteractive" />
+          <div
+            id={turnstileWidgetId}
+            className="cf-turnstile"
+            data-sitekey={turnstileSiteKey}
+            data-theme="dark"
+            data-callback="primewindowTurnstileCallback"
+            data-expired-callback="primewindowTurnstileExpiredCallback"
+            data-error-callback="primewindowTurnstileExpiredCallback"
+          />
+        </div>
+      ) : null}
 
       {error ? <p className="text-sm text-danger">{error}</p> : null}
 

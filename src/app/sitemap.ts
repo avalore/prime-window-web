@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${siteUrl}/open-letter`,
+      url: `${siteUrl}/the-problem-with-weather-apps`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.7,
