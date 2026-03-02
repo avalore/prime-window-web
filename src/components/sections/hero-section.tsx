@@ -6,30 +6,24 @@ import { ConfidenceTexture } from "@/components/ui/confidence-texture";
 import { Glow } from "@/components/ui/glow";
 
 export function HeroSection() {
-  const atAGlance = [
-    "Pick your spots and activities.",
-    "Set the conditions that feel good to you.",
-    "Get alerts when a Prime Window is coming.",
-  ];
+  const atAGlance = ["Define your conditions once.", "PrimeWindow watches your spots.", "Get notified when a window opens."];
 
   return (
     <section className="container-shell relative pt-14 md:pt-20">
       <Glow className="left-[10%] top-10 h-44 w-44 animate-breath" />
-      <div className="grid items-center gap-12 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
-        <div className="reveal space-y-7">
-          <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.12em] text-muted">
-            <span className="rounded-full border border-border/80 bg-surface/45 px-3 py-1">iOS app</span>
-            <span className="rounded-full border border-border/80 bg-surface/45 px-3 py-1">Push alerts</span>
-            <span className="rounded-full border border-border/80 bg-surface/45 px-3 py-1">Prime Windows</span>
-          </div>
-          <h1 className="max-w-[13ch] font-display text-4xl leading-tight text-text md:text-6xl">
-            Some days are just perfect. PrimeWindow tells you when.
-          </h1>
+      <div className="grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr] md:gap-16">
+        <h1 className="reveal w-full font-display text-4xl leading-tight text-text sm:text-5xl md:col-span-2 md:text-6xl">
+          Weather apps show forecasts. PrimeWindow shows opportunities.
+        </h1>
+        <div className="reveal space-y-6" style={{ "--reveal-delay": "70ms" } as CSSProperties}>
           <p className="max-w-xl text-lg leading-relaxed text-muted">
-            Tell PrimeWindow where you go and what conditions count as good. It tracks your spots and alerts you
-            before a Prime Window opens.
+            Set the wind conditions you actually care about. PrimeWindow tracks your spots and sends a notification
+            when a usable window appears.
           </p>
-          <div className="max-w-xl space-y-3 rounded-md border border-border/65 bg-surface/30 px-4 py-4">
+          <p className="text-sm text-muted">
+            <span className="text-text">Not another weather app.</span> Built for clear calls, not more chart checking.
+          </p>
+          <div className="max-w-xl space-y-3 rounded-md border border-border/65 bg-surface/30 px-4 py-4 shadow-soft">
             <ul className="space-y-2 text-sm text-text/90">
               {atAGlance.map((item) => (
                 <li key={item} className="flex items-start gap-2">
@@ -38,14 +32,14 @@ export function HeroSection() {
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-muted">No more checking three weather apps ten times a day.</p>
+            <p className="text-sm text-muted">No more refreshing forecasts all day to catch a two-hour window.</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#early-access"
               className="rounded-md border border-accent/35 bg-accent/16 px-5 py-3 text-sm font-medium text-text transition hover:bg-accent/24"
             >
-              Join early access
+              Join the waitlist
             </a>
             <a
               href="#how-it-works"
@@ -84,7 +78,7 @@ export function HeroSection() {
                     <p className="text-sm text-muted">South Bay</p>
                   </div>
                   <div className="rounded-full border border-accent/35 bg-accent/14 px-2.5 py-1 text-xs text-accent">
-                    82%
+                    Go • 82%
                   </div>
                 </div>
 
@@ -101,10 +95,10 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                <div className="mt-3 grid grid-cols-3 gap-2 text-[11px] text-muted">
-                  <div className="rounded-md border border-border/60 bg-bg/25 p-2">Wind holding</div>
-                  <div className="rounded-md border border-border/60 bg-bg/25 p-2">Rain low</div>
-                  <div className="rounded-md border border-border/60 bg-bg/25 p-2">Light stable</div>
+                <div className="mt-3 grid grid-cols-3 gap-2 text-[11px]">
+                  <div className="rounded-md border border-accent/35 bg-accent/10 p-2 text-accent">Go</div>
+                  <div className="rounded-md border border-amber/40 bg-amber/10 p-2 text-amber">Marginal</div>
+                  <div className="rounded-md border border-danger/35 bg-danger/10 p-2 text-danger">No-go</div>
                 </div>
               </div>
             </div>

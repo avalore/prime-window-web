@@ -133,7 +133,7 @@ export function EarlyAccessForm() {
     return (
       <Card className="mt-7 p-6">
         <p className="text-sm uppercase tracking-[0.1em] text-muted">You are in</p>
-        <p className="mt-2 text-lg text-text">Thanks. We will send updates as early access opens.</p>
+        <p className="mt-2 text-lg text-text">Thanks. We will send updates as soon as testing opens.</p>
         <p className="mt-2 text-sm text-muted">Email: {email}</p>
         {selected.length > 0 ? <p className="mt-1 text-sm text-muted">Activities: {selectedText}</p> : null}
         {location.trim() ? <p className="mt-1 text-sm text-muted">Location: {location.trim()}</p> : null}
@@ -235,7 +235,7 @@ export function EarlyAccessForm() {
         disabled={isSubmitting}
         className="rounded-md border border-accent/40 bg-accent/16 px-5 py-3 text-sm font-medium text-text transition hover:bg-accent/24 disabled:opacity-65"
       >
-        {isSubmitting ? "Sending..." : "Join early access"}
+        {isSubmitting ? "Sending..." : "Join the waitlist"}
       </button>
     </form>
   );

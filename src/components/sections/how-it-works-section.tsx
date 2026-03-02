@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { Card } from "@/components/ui/card";
+import { ConfidenceTexture } from "@/components/ui/confidence-texture";
 
 type Step = {
   title: string;
@@ -9,16 +10,16 @@ type Step = {
 
 const steps: Step[] = [
   {
-    title: "Pick your spots",
-    body: "Save the places you care about and keep them ready.",
+    title: "Set your conditions",
+    body: "Define wind direction, speed, gust limits, rain, and daylight once.",
   },
   {
-    title: "Choose what \"good\" means",
-    body: "Use presets, then tweak when you want more control.",
+    title: "PrimeWindow watches",
+    body: "It keeps checking your spots in the background across upcoming forecast windows.",
   },
   {
-    title: "Get alerted when a Prime Window opens",
-    body: "You get one clear signal when conditions line up.",
+    title: "You get the signal",
+    body: "A notification appears when your conditions line up and the window looks usable.",
   },
 ];
 
@@ -64,10 +65,40 @@ export function HowItWorksSection() {
     <section id="how-it-works" className="section-gap container-shell">
       <div className="reveal flex items-end justify-between gap-6">
         <div>
-          <p className="text-sm uppercase tracking-[0.14em] text-muted">How it works</p>
-          <h2 className="mt-3 font-display text-3xl text-text md:text-4xl">A calm way to plan ahead.</h2>
+          <p className="text-sm uppercase tracking-[0.14em] text-muted">The reframe</p>
+          <h2 className="mt-3 max-w-[18ch] font-display text-3xl text-text md:text-4xl">
+            Weather apps show forecasts. PrimeWindow shows windows.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+            You define your rules, PrimeWindow watches the forecast, and you get notified when the match appears.
+          </p>
         </div>
       </div>
+
+      <div className="reveal mt-6 rounded-lg border border-border/65 bg-surface/30 p-4" style={{ "--reveal-delay": "70ms" } as CSSProperties}>
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <span className="rounded-full border border-accent/35 bg-accent/10 px-3 py-1 text-accent">Green = Go</span>
+          <span className="rounded-full border border-amber/40 bg-amber/10 px-3 py-1 text-amber">Orange = Marginal</span>
+          <span className="rounded-full border border-danger/35 bg-danger/10 px-3 py-1 text-danger">Red = No-go</span>
+        </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div className="rounded-md border border-border/65 bg-bg/25 p-3">
+            <p className="text-xs uppercase tracking-[0.1em] text-muted">Higher confidence</p>
+            <div className="mt-2 space-y-2">
+              <ConfidenceTexture className="w-[85%]" />
+              <ConfidenceTexture className="w-[82%]" />
+            </div>
+          </div>
+          <div className="rounded-md border border-border/65 bg-bg/25 p-3">
+            <p className="text-xs uppercase tracking-[0.1em] text-muted">Lower confidence</p>
+            <div className="mt-2 space-y-2">
+              <ConfidenceTexture className="w-[77%]" diffuse />
+              <ConfidenceTexture className="w-[52%]" diffuse />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-8 grid gap-4 md:grid-cols-3">
         {steps.map((step, index) => {
           const Icon = icons[index];

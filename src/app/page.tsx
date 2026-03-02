@@ -17,11 +17,11 @@ export default function HomePage() {
       <NavBar />
       <main>
         <HeroSection />
-        <CredibilityStrip />
         <InsightSection />
         <HowItWorksSection />
         <UseCasesSection />
         <ConfidenceSection />
+        <CredibilityStrip />
         <ShareSection />
         <EarlyAccessSection />
       </main>

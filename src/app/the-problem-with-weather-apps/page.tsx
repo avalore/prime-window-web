@@ -63,10 +63,12 @@ export default function WeatherAppsProblemPage() {
           </p>
 
           <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_01">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_01 - A personal photo (paragliding / speedflying / skydiving
-              / BASE - anything that shows the reality of the hobby)]
-            </div>
+            <img
+              src="/jump.jpeg"
+              alt="Louis during a jump session"
+              className="w-full rounded-md border border-border/70 object-cover"
+              loading="lazy"
+            />
             <figcaption className="mt-2 text-xs text-muted">A regular day out when everything lines up.</figcaption>
           </figure>
         </section>
@@ -119,10 +121,12 @@ export default function WeatherAppsProblemPage() {
           </p>
 
           <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_02">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_02 - Screenshot of a &ldquo;Windy&rdquo; alert setup (or
-              similar existing app alert UI)]
-            </div>
+            <img
+              src="/windy_alert.jpeg"
+              alt="Example weather alert setup in an existing app"
+              className="w-full rounded-md border border-border/70 object-cover"
+              loading="lazy"
+            />
             <figcaption className="mt-2 text-xs text-muted">
               Alerts exist, but they&apos;re rarely the main experience.
             </figcaption>
@@ -136,10 +140,12 @@ export default function WeatherAppsProblemPage() {
           </p>
 
           <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_03">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_03 - Screenshot/snippet of a bash script / cron /
-              notification setup (can be blurred)]
-            </div>
+            <img
+              src="/script.png"
+              alt="Script-based weather notification setup"
+              className="w-full rounded-md border border-border/70 object-cover"
+              loading="lazy"
+            />
             <figcaption className="mt-2 text-xs text-muted">
               It worked, but it wasn&apos;t something I could recommend to anyone.
             </figcaption>
@@ -199,23 +205,6 @@ export default function WeatherAppsProblemPage() {
             scanning forecasts &ldquo;just in case&rdquo;.
           </p>
 
-          <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_04">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_04 - Screenshot of PrimeWindow &ldquo;Create conditions /
-              preset&rdquo; screen]
-            </div>
-            <figcaption className="mt-2 text-xs text-muted">Tell it what you need once.</figcaption>
-          </figure>
-
-          <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_05">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_05 - Screenshot of a PrimeWindow notification /
-              &ldquo;window found&rdquo; card]
-            </div>
-            <figcaption className="mt-2 text-xs text-muted">
-              PrimeWindow only interrupts you when it matters.
-            </figcaption>
-          </figure>
         </section>
 
         <section className="space-y-5">
@@ -245,9 +234,12 @@ export default function WeatherAppsProblemPage() {
           </p>
 
           <figure className="rounded-lg border border-border/65 bg-surface/35 p-4" data-placeholder="PLACEHOLDER_IMAGE_06">
-            <div className="rounded-md border border-dashed border-border/70 bg-bg/30 p-6 text-sm text-muted">
-              [Screenshot placeholder: PLACEHOLDER_IMAGE_06 - Screenshot of a shared window view (in-app or web)]
-            </div>
+            <img
+              src="/share.png"
+              alt="Shared PrimeWindow view with time, location, and confidence"
+              className="w-full rounded-md border border-border/70 object-cover"
+              loading="lazy"
+            />
             <figcaption className="mt-2 text-xs text-muted">
               Less back-and-forth, more &ldquo;shall we go?&rdquo;
             </figcaption>

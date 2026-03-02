@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const links = [
   { href: "#how-it-works", label: "How it works" },
-  { href: "#use-cases", label: "Use cases" },
-  { href: "#confidence", label: "Confidence" },
+  { href: "#use-cases", label: "Built for" },
+  { href: "#confidence", label: "Why it matters" },
   { href: "/the-problem-with-weather-apps", label: "The problem" },
   { href: "#early-access", label: "Early access" },
 ];
@@ -45,7 +45,7 @@ export function NavBar() {
           href="#early-access"
           className="rounded-md border border-accent/35 bg-accent/12 px-4 py-2 text-sm font-medium text-text shadow-soft transition hover:bg-accent/20"
         >
-          Join early access
+          Join the waitlist
         </a>
       </div>
     </header>
